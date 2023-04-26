@@ -1,6 +1,7 @@
 from coin import Crm, Coin
 
 
-crm = Coin()
+coin = Coin()
+crm = Crm()
 
 print(crm.id())
