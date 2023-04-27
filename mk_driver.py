@@ -1,5 +1,5 @@
-from coin import Coin
-from aside import Aside
+from coin.coin import Coin
+from aside.aside import Aside
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -18,7 +18,7 @@ class Mk:
         self._password = password
         self._driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()))
-        self._wdw = WebDriverWait(self._driver, 20)
+        self._wdw = WebDriverWait(self._driver, 300)
         self._mouse = ActionChains(self._driver)
         self._driver.get(url)
 

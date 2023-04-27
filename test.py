@@ -1,7 +1,13 @@
-from coin import Crm, Coin
+from multiprocessing import Process
+import time
 
 
-coin = Coin()
-crm = Crm()
+def f(name):
+    print('hello', name)
+    time.sleep(5)
 
-print(crm.id())
+
+if __name__ == '__main__':
+    p = Process(target=f, args=('bob', 'asdf', 'qwer'))
+    p.start()
+    p.join()

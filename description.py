@@ -1,14 +1,4 @@
 class Asside:
-    class Crm:
-        GERENCIADOR_DE_FECHAMENTO = {'title': 'Gerenciador de Fechamento',
-                                     'id': '539320', 'xpath': '//a[@title="Gerenciador de Fechamento"]'}
-        GERENCIADOR_DE_COMISSOES = {'title': 'Gerenciador de Comissões',
-                                    'id': '887989', 'xpath': '//a[@title="Gerenciador de Comissões"]'}
-        GERENCIADOR_DE_CANCELAMENTO = {'title': 'Gerenciador de Cancelamento',
-                                       'id': '1406061', 'xpath': '//a[@title="Gerenciador de Cancelamento"]'}
-        MAPA_DE_CRM = {'title': 'Mapa de CRM', 'id': '1998852',
-                       'xpath': '//a[@title="Mapa de CRM"]'}
-
     class Gestao:
         APLICATIVOS_MOVEIS = {'title': 'Aplicativos Móveis',
                               'id': '1310310', 'xpath': '//a[@title="Aplicativos Móveis"]'}
@@ -41,50 +31,6 @@ class Asside:
                                'id': '1522033', 'xpath': '//a[@title="Plano de Contas"]'}
             PROGRAMACAO_DE_PAGAMENTO = {'title': 'Programação de Pagamento',
                                         'id': '1247005', 'xpath': '//a[@title="Programação de Pagamento"]'}
-
-    class Financeiro:
-        PAINEL_DINAMICO = {'title': 'Painel Dinâmico',
-                           'id': '218633', 'xpath': '//a[@title="Painel Dinâmico"]'}
-        LEITURA_DE_RETORNO = {'title': 'Leitura de Retorno',
-                              'id': '845808', 'xpath': '//a[@title="Leitura de Retorno"]'}
-        REMESSAS = {'title': 'Remessas', 'id': '1288915',
-                    'xpath': '//a[@title="Remessas"]'}
-        FATURAMENTO = {'title': 'Faturamento - Painel', 'id': '333317',
-                       'xpath': '//a[@title="Faturamento"]'}
-        GERENCIADOR_DE_CONCILIACOES = {'title': 'Gerenciador de Conciliações',
-                                       'id': '1710589', 'xpath': '//a[@title="Gerenciador de Conciliações"]'}
-        GERENCIADOR_DE_FILAS_E_LOTES_DE_EMAILS = {'title': 'Gerenciador de filas e lotes de emails',
-                                                  'id': '1958978', 'xpath': '//a[@title="Gerenciador de filas e lotes de emails"]'}
-        GERENCIADOR_DE_FLUXO_DE_CAIXAS = {'title': 'Gerenciador de Fluxo de Caixas',
-                                          'id': '1650767', 'xpath': '//a[@title="Gerenciador de Fluxo de Caixas"]'}
-        GERENCIADOR_DE_CENTRO_DE_CUSTOS = {'title': 'Gerenciador de Centro de Custos',
-                                           'id': '1042182', 'xpath': '//a[@title="Gerenciador de Centro de Custos"]'}
-        GERENCIADOR_DE_COBRANCAS = {'title': 'Gerenciador de Cobranças',
-                                    'id': '1458450', 'xpath': '//a[@title="Gerenciador de Cobranças"]'}
-        GERENCIADOR_DE_CONTAS_A_PAGAR = {'title': 'Gerenciador de Contas a Pagar',
-                                         'id': '1878993', 'xpath': '//a[@title="Gerenciador de Contas a Pagar"]'}
-        GERENCIADOR_DE_CONTAS_A_RECEBER = {'title': 'Gerenciador de Contas a Receber',
-                                           'id': '1171825', 'xpath': '//a[@title="Gerenciador de Contas a Receber"]'}
-        GERENCIADOR_DE_CONTRATOS = {'title': 'Gerenciador de Contratos',
-                                    'id': '1976290', 'xpath': '//a[@title="Gerenciador de Contratos"]'}
-        GERENCIADOR_DE_INADIMPLENCIA = {'title': 'Gerenciador de Inadimplência',
-                                        'id': '1118213', 'xpath': '//a[@title="Gerenciador de Inadimplência"]'}
-        GERENCIADOR_DE_NFSE = {'title': 'Gerenciador de NFSE',
-                               'id': '1552812', 'xpath': '//a[@title="Gerenciador de NFSE"]'}
-        PROGRAMACAO_DE_PAGAMENTOS = {'title': 'Programação de Pagamentos',
-                                     'id': '1391737', 'xpath': '//a[@title="Programação de Pagamentos"]'}
-        GERENCIADOR_DE_PLANO_DE_CONTAS = {'title': 'Gerenciador de Plano de contas',
-                                          'id': '462340', 'xpath': '//a[@title="Gerenciador de Plano de contas"]'}
-        PAINEL_DO_CLIENTE = {'title': 'Painel do Cliente',
-                             'id': '639769', 'xpath': '//a[@title="Painel do Cliente"]'}
-        PAGSEGURO = {'title': 'PagSeguro', 'id': '1490613',
-                     'xpath': '//a[@title="PagSeguro"]'}
-        NF_21_22_NFSE_E_NOTA_DE_DEBITO = {'title': 'NF 21/22/NFSE e Nota de débito',
-                                          'id': '22857', 'xpath': '//a[@title="NF 21/22/NFSE e Nota de débito"]'}
-        TRANSACOES_VIA_CARTAO = {'title': 'Transações via Cartão',
-                                 'id': '1439721', 'xpath': '//a[@title="Transações via Cartão"]'}
-        TRANSACOES_VIA_PIX = {'title': 'Transações via PIX',
-                              'id': '1270636', 'xpath': '//a[@title="Transações via PIX"]'}
 
     class Workspace:
         PAINEL_DINAMICO = {'title': 'Painel Dinâmico',

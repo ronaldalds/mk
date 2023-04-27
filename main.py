@@ -1,80 +1,53 @@
 import time
-from coin import Crm, Financeiro
-from asideCrm import GerenciadorDeFechamento
+import multiprocessing
+from coin.coin import Crm
+from aside.asideCrm import GerenciadorDeFechamento
 from mk_driver import Mk
-# import pandas
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
-crm = Crm()
-gdf = GerenciadorDeFechamento()
 
 
-async def pro(inta: Mk):
-    inta.login()
-    inta.iframeCoin()
-    inta.click(crm.xpath())
-    inta.minimizeChat()
-    inta.iframeAsideCoin(crm)
-    inta.click(gdf.xpath())
-    inta.iframePainel(crm, gdf)
-    inta.click(
-        '//button[@title="Detalhes dos produtos (Mês corrente)"]')
+def sendEmail(num) -> int:
+    crm = Crm()
+    gdf = GerenciadorDeFechamento()
+    instance = Mk(
+        username=os.getenv('USERNAME'),
+        password=os.getenv('PASSWORD'),
+        url=os.getenv('URL'),
+    )
 
-# file = pandas.read_csv('imobilizados.csv')
+    instance.login()
 
+    instance.iframeCoin()
+    instance.click(crm.xpath())
 
-emailSendingInvoice = Mk(
-    username=os.getenv('USERNAME'),
-    password=os.getenv('PASSWORD'),
-    url=os.getenv('URL'),
-)
-emailSendingInvoice2 = Mk(
-    username=os.getenv('USERNAME'),
-    password=os.getenv('PASSWORD'),
-    url=os.getenv('URL'),
-)
+    instance.iframeAsideCoin(crm)
+    instance.click(gdf.xpath())
 
-pro(emailSendingInvoice)
-pro(emailSendingInvoice2)
+    print(num)
+    time.sleep(10)
+    instance.close()
+    return num
 
 
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, Coin.FINANCEIRO['xpath'])).pause(5).click().pause(5).perform()
+lista_de_clientes = [i for i in range(50)]
 
-# tela.minimizeChat()
+# número de processos a serem criados
+num_processes = multiprocessing.cpu_count()
 
-# tela.iframeAsideCoin(Coin.FINANCEIRO)
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, Aside.Financeiro.GERENCIADOR_DE_CONTAS_A_RECEBER['xpath'])).pause(5).click().pause(5).perform()
+# cria um pool com o número de processos obtidos
+pool = multiprocessing.Pool(processes=num_processes-1)
 
-# tela.iframePainel(
-#     coin=Coin.FINANCEIRO,
-#     aside=Aside.Financeiro.GERENCIADOR_DE_CONTAS_A_RECEBER
-# )
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, '//button[@title="Envio em massa de boletos."]')).pause(5).click().pause(5).perform()
+# executa a função minha_funcao para cada cliente na lista em paralelo
+resultados = []
+for cliente in lista_de_clientes:
+    # print(cliente)
+    resultados.append(pool.apply_async(sendEmail, args=(cliente,)))
 
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, '//button[@title="Adicionar lote de boletos."]')).pause(5).click().pause(5).perform()
+# obtém os resultados de cada processo e os armazena em uma lista
+resultados = [r.get() for r in resultados]
 
-# tela.iframeForm()
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, '//*[@title="Selecione a profile desejada."]/div/button')).pause(5).click().pause(5).perform()
-
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, '//option[@value="588"]')).pause(2).click().pause(2).perform()
-
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, '//*[@title="Data de vencimento inicial da pesquisa."]')).pause(2).click().send_keys('25042023').pause(2).perform()
-
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, '//*[@title="Data de vencimento final da pesquisa."]')).pause(2).click().send_keys('25042023').pause(2).perform()
-
-# mouse.move_to_element(driver.find_element(
-#     By.XPATH, '//*[@title="Marque caso deseje aplicar o filtro."]')).pause(2).click().pause(2).perform()
-
-time.sleep(15)
-
-tela.close()
+# exibe os resultados
+print(resultados)

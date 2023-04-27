@@ -1,4 +1,4 @@
-from aside import Aside
+from aside.aside import Aside
 
 
 class CrmHome(Aside):
