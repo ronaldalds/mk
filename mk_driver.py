@@ -27,6 +27,11 @@ class Mk:
             By.XPATH, xpath
         )).pause(5).click().pause(5).perform()
 
+    def write(self, xpath: str, text: str):
+        self._mouse.move_to_element(self._driver.find_element(
+            By.XPATH, xpath
+        )).pause(2).send_keys(text).pause(2).perform()
+
     def login(self):
         self._driver.find_element(
             By.XPATH, '//input[@placeholder="Nome do usuário"]').send_keys(self._username)

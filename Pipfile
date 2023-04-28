@@ -9,6 +9,7 @@ webdriver-manager = "*"
 pydantic = "*"
 pandas = "*"
 python-dotenv = "*"
+openpyxl = "*"
 
 [dev-packages]
 
