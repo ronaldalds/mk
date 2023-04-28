@@ -64,28 +64,6 @@ class Asside:
         SMS_PAINEL = {'title': 'SMS - Painel', 'id': '418523',
                       'xpath': '//a[@title="SMS - Painel"]'}
 
-    class Estoque:
-        PAINEL_DINAMICO = {'title': 'Painel Dinâmico',
-                           'id': '1947945', 'xpath': '//a[@title="Painel Dinâmico"]'}
-        COMPRA = {'title': 'Compra', 'id': '508868',
-                  'xpath': '//a[@title="Compra"]'}
-        ESTOQUISTA = {'title': 'Estoquista', 'id': '1638245',
-                      'xpath': '//a[@title="Estoquista"]'}
-        GERENCIADOR_DE_IDS = {'title': 'Gerenciador de IDs',
-                              'id': '1377474', 'xpath': '//a[@title="Gerenciador de IDs"]'}
-        GERENCIADOR_DE_IMOBILIZADOS = {'title': 'Gerenciador de Imobilizados',
-                                       'id': '589689', 'xpath': '//a[@title="Gerenciador de Imobilizados"]'}
-        GERENCIADOR_DE_VEICULOS = {'title': 'Gerenciador de veículos',
-                                   'id': '583121', 'xpath': '//a[@title="Gerenciador de veículos"]'}
-        PAINEL_DE_DEVOLUCAO = {'title': 'Painel de Devolução',
-                               'id': '1314265', 'xpath': '//a[@title="Painel de Devolução"]'}
-        PAINEL_DE_NOTAS = {
-            'title': 'Painel de Notas (NF-e)', 'id': '1729850', 'xpath': '//a[@title="Painel de Notas (NF-e)"]'}
-        RASTREABILIDADE = {'title': 'Rastreabilidade',
-                           'id': '1627534', 'xpath': '//a[@title="Rastreabilidade"]'}
-        MOVIMENTACAO_SAIDAS = {'title': 'Movimentação - Saídas',
-                               'id': '279678', 'xpath': '//a[@title="Movimentação - Saídas"]'}
-
     class Tecnico:
         PAINEL_DINAMICO = {'title': 'Painel Dinâmico',
                            'id': '191885', 'xpath': '//a[@title="Painel Dinâmico"]'}
