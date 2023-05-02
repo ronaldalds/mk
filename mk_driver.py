@@ -14,8 +14,8 @@ from selenium.webdriver.support.expected_conditions import (
 
 class Mk:
     def __init__(self, username: str, password: str, url: str):
-        self._username = username
-        self._password = password
+        self._username: str = username
+        self._password: str = password
         self._driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()))
         self._wdw = WebDriverWait(self._driver, 300)
