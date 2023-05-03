@@ -6,23 +6,35 @@ from aside.asideEstoque import EstoqueHome
 from mk_driver import Mk
 from dotenv import load_dotenv
 import os
+import logging
+import datetime
 
 load_dotenv()
 
+file_log = datetime.now().strftime("logs/Cancelamento_%d_%m_%Y.log")
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format=formatter,
+                    datefmt='%d/%m/%Y - %H:%M')
 
-def cadastroProduto(
-        descricao,
-        categoria,
-        und,
-        inativo,
-        trabalho,
-        serial,
-        mobile
+
+def cancelamento(
+    contrato,
+    cod_Pessoa,
+    conexao_associada,
+    documento_codigo,
+    tipo_os,
+    planos_de_contas,
+    relato_do_problema,
+    detalhes_cancelamento,
+    grupo_atendimento_os,
+    incidencia_de_multa,
+    valor_multa,
+    data_vcto_multa_contratual,
+    data_a_cancelar,
+    loja,
+    onu_serial,
 ):
-    isInativo: bool = True if inativo == 'Sim' else False
-    isTrabalho: bool = True if trabalho == 'Sim' else False
-    isSerial: bool = True if serial == 'Sim' else False
-    isMobile: bool = True if mobile == 'Sim' else False
 
     instance = Mk(
         username=os.getenv('USERNAME'),
@@ -30,67 +42,35 @@ def cadastroProduto(
         url=os.getenv('URL'),
     )
 
-    estoque = Estoque()
-    estoqueHome = EstoqueHome()
-
     instance.login()
-
-    instance.iframeCoin()
-    instance.click(estoque.xpath())
-
-    instance.minimizeChat()
-
-    instance.iframePainel(coin=estoque, aside=estoqueHome)
-    instance.click('//button[@title="Novo Produto"]')
-
-    instance.iframeForm()
-    instance.write(
-        xpath='//input[@title="Informe uma breve descrição para o produto"]',
-        text=descricao
-    )
-
-    instance.click(
-        '//div[@title="Informe a unidade de comercialização do produto"]/div/button')
-    instance.click(f'//option[text()="{und}"]')
-
-    instance.click(
-        '//div[@title="Informe a categoria do produto"]/div/button')
-    instance.click(f'//option[text()="{categoria}"]')
-
-    if isInativo:
-        instance.click('//div[@title="Inativar produto."]')
-
-    if isTrabalho:
-        instance.click(
-            '//div[@title="Informe se esse produto é um material restrito para uso interno da empresa. "]')
-
-    if isSerial:
-        instance.click('//div[@title="Marque essa opção para ativar o controle serial desse produto. Ao ativar essa opção as movimentações serão controladas por um código único informado no cadastro de Seriais/MAC."]')
-
-    if isMobile:
-        instance.click('//div[@title="Sincronizar com mobile."]')
-
-    print(descricao,
-          categoria,
-          und,
-          inativo,
-          trabalho,
-          serial,
-          mobile)
 
     time.sleep(10)
     instance.close()
     return descricao
 
 
-cadastroProduto(
-    descricao='TAMPA 3 POSTO SEPARADOS 4X2(A.4)',
-    categoria='INFRAESTRUTURA&nbsp;DE&nbsp;REDE&nbsp;EXTERNA  ',
-    und='KIT  ',
-    inativo='Não',
-    trabalho='Não',
-    serial='Não',
-    mobile='Sim'
+cancelamento(
+    contrato='215062',
+    cod_Pessoa='177680',
+    conexao_associada='228777',
+    documento_codigo='033.804.802-23 cod: 177680',
+    tipo_os='Cancelamento - Fibra',
+    planos_de_contas='01.01.02.01 Cliente - Pessoa Física',
+    relato_do_problema='''Cancelamento em razão de inadimplência superior a 75 dias, em conformidade com os artigos 90 a 100 da resolução nº 632/2014 da Anatel
+            
+            Observação1: Multa por quebra de contrato de R$ 75,00. Para negociar seu débito, basta entrar em contato pelo 0800-088-1111
+            Observação2: MAC - FC:40:09:16:10:1C | Serial ONU - ZTEG:CF233EE2 | Caixa - TCI AF.6.3.9 | Porta - 1
+            Observação3: Encerramento da OS de recolhimento de equipamentos deste contrato = Retirada Concluída''',
+    detalhes_cancelamento='''Cancelamento em razão de inadimplência superior a 75 dias, em conformidade com os artigos 90 a 100 da resolução nº 632/2014 da Anatel.
+            MAC: FC:40:09:16:10:1C | Serial ONU: ZTEG:CF233EE2 | Caixa: TCI AF.6.3.9 | Porta: 1 |
+            Multa: R$ 75,00''',
+    grupo_atendimento_os='TUCURUI',
+    incidencia_de_multa='S',
+    valor_multa='75',
+    data_vcto_multa_contratual='13/05/2023',
+    data_a_cancelar='25/03/2023',
+    loja='LOJA TUCURUI',
+    onu_serial='ZTEG:CF233EE2',
 )
 
 
